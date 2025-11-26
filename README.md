@@ -1,6 +1,6 @@
 # ESPHome Non-Blocking Ping Counter
 
-A high-performance, **non-blocking** network monitor component for ESPHome.
+A high-performance, **non-blocking** network monitor component for ESPHome - VIBE CODED USING GEMINI3 Pro - I did nothing other than spec the parameters - USE AT YOUR OWN RISK
 
 Unlike the standard ESPHome ping sensor, this component uses asynchronous ICMP packets (`AsyncPing`). This means it can check network status without pausing the main loop or freezing your device. This is critical for PLCs, Brewery Controllers, LED strips, or any device handling real-time sensors (like flow meters or rotary encoders) where a 1-second freeze could ruin data.
 
