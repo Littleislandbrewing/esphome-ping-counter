@@ -19,10 +19,8 @@ PING_COUNTER_SCHEMA = cv.Schema({
 CONFIG_SCHEMA = cv.All(cv.ensure_list(PING_COUNTER_SCHEMA))
 
 async def to_code(config):
-    # FIX: Use the ZIP download link. 
-    # This avoids "git clone" errors and "username" prompts completely.
-    cg.add_library("AsyncPing", "1.1.0", "https://github.com/marian-craciunescu/AsyncPing/archive/refs/tags/1.1.0.zip")
-
+    # No external libraries required. 
+    # Uses native ESP-IDF 'ping' component included in the framework.
     for conf in config:
         var = cg.new_Pvariable(conf[CONF_ID])
         await cg.register_component(var, conf)
