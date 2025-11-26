@@ -22,4 +22,4 @@ ping_counter:
     update_interval: 5s
     threshold: 10
     alert_binary_sensor:
-      name: "Internet Drop Alert"
+      name: "Internet Drop Alert" 
