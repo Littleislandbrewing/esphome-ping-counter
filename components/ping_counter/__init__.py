@@ -9,7 +9,6 @@ PingCounter = ping_counter_ns.class_('PingCounter', cg.PollingComponent)
 CONF_ALERT_SENSOR = "alert_binary_sensor"
 CONF_THRESHOLD = "threshold"
 
-# 1. Define the schema for a SINGLE item
 PING_COUNTER_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(PingCounter),
     cv.Required(CONF_IP_ADDRESS): cv.string,
@@ -17,12 +16,12 @@ PING_COUNTER_SCHEMA = cv.Schema({
     cv.Optional(CONF_ALERT_SENSOR): binary_sensor.binary_sensor_schema(),
 }).extend(cv.polling_component_schema("10s"))
 
-# 2. Allow a LIST of items
 CONFIG_SCHEMA = cv.All(cv.ensure_list(PING_COUNTER_SCHEMA))
 
 async def to_code(config):
-    # FIX: Use full Git URL to prevent "UnknownPackageError"
-    cg.add_library("AsyncPing", "1.1.0", "https://github.com/marian-craciunescu/AsyncPing.git")
+    # FIX: Use the ZIP download link. 
+    # This avoids "git clone" errors and "username" prompts completely.
+    cg.add_library("AsyncPing", "1.1.0", "https://github.com/marian-craciunescu/AsyncPing/archive/refs/tags/1.1.0.zip")
 
     for conf in config:
         var = cg.new_Pvariable(conf[CONF_ID])
